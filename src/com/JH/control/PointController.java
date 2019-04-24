@@ -34,6 +34,8 @@ public class PointController {
 			switch(num) {
 			case 1:
 				pointDTO = pi.setPoint();
+				int nu = pd.getnum();
+				pointDTO.setNum(nu+1);
 				int result = pd.insert(pointDTO);
 				
 				String message = "등록실패";

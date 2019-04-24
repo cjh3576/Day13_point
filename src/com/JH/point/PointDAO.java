@@ -38,6 +38,19 @@ public class PointDAO {
 		return ar;
 
 	}
+	public int getnum() throws Exception {
+		Connection con = DBConnector.getConnect();
+		
+		String sql = "select nvl(max(num),0) as numfrom point";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int num = rs.getInt("num");
+		DBConnector.disConnect(rs, st, con);
+		
+		return num;
+		
+	}
 	public PointDTO selectOne(int num) throws Exception {
 		PointDTO dto = null;
 		Connection con = DBConnector.getConnect();
